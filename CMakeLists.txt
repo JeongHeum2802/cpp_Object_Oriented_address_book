@@ -9,12 +9,21 @@ if(MSVC)
     add_compile_options(/utf-8)
 endif()
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME} 
+  src/main.cpp
+  src/src/UserData.cpp
+  src/src/MyList.cpp
+  src/src/UserInterface.cpp
+)
 
 # 우리 프로젝트에 include / lib 관련 옵션 추가
 target_include_directories(${PROJECT_NAME} PUBLIC ${DEP_INCLUDE_DIR})
 target_link_directories(${PROJECT_NAME} PUBLIC ${DEP_LIB_DIR})
 target_link_libraries(${PROJECT_NAME} PUBLIC ${DEP_LIBS})
+target_include_directories(${PROJECT_NAME}
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/include
+)
 
 
 # Dependency들이 먼저 build 될 수 있게 관계 설정
