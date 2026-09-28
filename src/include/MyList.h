@@ -1,23 +1,24 @@
 #pragma once
+#include "MyNode.h"
 
-#include "UserData.h"
+class CMyNode;
 
 class CMyList
 {
 public:
-  CMyList(const char* pszFileName);
+  CMyList(CMyNode *pHead);
   ~CMyList(void);
 
 protected:
   void ReleaseList(void);
-  CUserData m_Head;
+  CMyNode *m_pHead;
   const char* pszFileName;
 
 public:
-  CUserData* FindNode(const char* pszName);
-  int AddNewNode(const char* pszName, const char* pszPhone);
+  CMyNode* FindNode(const char* pszKey);
+  int AddNewNode(CMyNode *pNewNode);
 
   void PrintAll(void);
 
-  int RemoveNode(const char* pszName);
+  int RemoveNode(const char* pszKey);
 };

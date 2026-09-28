@@ -1,9 +1,11 @@
 #include "include/UserInterface.h"
 #include "include/MyList.h"
+#include "include/UserData.h"
 
 int main(int argc, char** argv)
 {
-  CMyList DB("address.dat");
+  CUserData Head;
+  CMyList DB(&Head);
   CUserInterface UI(DB);
   UI.Run();
 

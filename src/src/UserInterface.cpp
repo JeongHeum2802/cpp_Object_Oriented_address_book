@@ -1,5 +1,6 @@
 #include "UserInterface.h"
 #include "MyList.h"
+#include "UserData.h"
 #include <iostream>
 
 CUserInterface::CUserInterface(CMyList &rList) : m_List(rList)
@@ -20,7 +21,7 @@ void CUserInterface::Add()
   std::cout << "전화번호를 입력하세요: ";
   std::cin >> szPhone;
 
-  m_List.AddNewNode(szName, szPhone);
+  m_List.AddNewNode(new CUserData(szName, szPhone));
 }
 
 int CUserInterface::PrintUI()
@@ -45,11 +46,11 @@ void CUserInterface::Search()
   std::cout << "검색할 이름을 입력하세요: ";
   std::cin >> szName;
 
-  CUserData *pNode = m_List.FindNode(szName);
+  CMyNode *pNode = m_List.FindNode(szName);
 
   if (pNode != nullptr)
   {
-    std::cout << "이름: " << pNode->GetName() << ", 전화번호: " << pNode->GetPhone() << std::endl;
+    pNode->PrintNode();
   }
   else
   {

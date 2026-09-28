@@ -1,24 +1,23 @@
 #pragma once
+#include "MyNode.h"
 
-class CUserData
+class CUserData : public CMyNode
 {
-  friend class CMyList;
-
 public:
-  CUserData(void);
-  ~CUserData(void);
+  CUserData();
+  CUserData(const char *pszName, const char *pszPhone);
+  ~CUserData();
 
-  const char* GetName(void) const { return szName; }
-  const char* GetPhone(void) const { return szPhone; }
-  CUserData* GetNext(void) const { return pNext; }
-
-  static int GetUserDataCounter(void) { return nUserDataCounter; }
+  const char* GetName() const { return szName; }
+  const char* etPhone() const { return szPhone; }
 
 protected:
   char szName[32];
   char szPhone[32];
 
-  CUserData *pNext;
-
   static int nUserDataCounter;
+
+public:
+  const char* GetKey() const override;
+  void PrintNode() override;
 };

@@ -14,6 +14,7 @@ add_executable(${PROJECT_NAME}
   src/src/UserData.cpp
   src/src/MyList.cpp
   src/src/UserInterface.cpp
+  src/src/MyNode.cpp
 )
 
 # 우리 프로젝트에 include / lib 관련 옵션 추가
